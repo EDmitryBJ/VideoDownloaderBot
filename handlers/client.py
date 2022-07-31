@@ -14,7 +14,8 @@ async def command_start(message: types.Message):
         await message.delete()
         await bot.send_message(message.from_user.id,
                                "Введите ссылку на плейлист и бот вышлет ссылки на скачивание всех "
-                               "содержащихся в нём видео")
+                               "содержащихся в нём видео.\nФормат ввода: \n<ссылка на видео/плейлист/канал>"
+                               " <разрешение в формате: 720p.>")
     except:
         await message.reply("Команды боту возможны только через ЛС")
 
@@ -87,7 +88,8 @@ async def link_handler(message: types.Message):
             resolution = msg_parts[1]
         except:
             await bot.send_message(message.from_user.id,
-                                   "Неправильный ввод.\nФормат ввода:<https://...> <.../720p/480p/...>")
+                                   "Неправильный ввод.\nФормат ввода:\n<ссылка на видео/плейлист/канал>"
+                                   " <разрешение в формате: 720p.>")
             return
         try:
             if url.__contains__("/c/"):
